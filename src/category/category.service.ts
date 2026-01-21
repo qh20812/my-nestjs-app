@@ -27,7 +27,7 @@ export class CategoryService {
   }
 
   async findAll(): Promise<Record<string, unknown>[]> {
-    return this.categoryModel.find().lean().exec();
+    return this.categoryModel.find().lean().exec() as unknown as Record<string, unknown>[];
   }
 
   async findOne(id: string): Promise<Record<string, unknown>> {

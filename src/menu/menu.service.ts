@@ -30,7 +30,7 @@ export class MenuService {
       .populate('category')
       .populate('user', 'name email')
       .lean()
-      .exec();
+      .exec() as unknown as Record<string, unknown>[];
   }
 
   async findOne(id: string): Promise<Record<string, unknown>> {

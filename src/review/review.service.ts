@@ -40,7 +40,7 @@ export class ReviewService {
       .populate('user', 'name email')
       .populate('item', 'name price')
       .lean()
-      .exec();
+      .exec() as unknown as Record<string, unknown>[];
   }
 
   async findOne(id: string): Promise<Record<string, unknown>> {

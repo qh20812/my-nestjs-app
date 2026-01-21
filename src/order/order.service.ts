@@ -67,7 +67,7 @@ export class OrderService {
       .populate('user', 'name email')
       .populate('items.menu', 'name price')
       .lean()
-      .exec();
+      .exec() as unknown as Record<string, unknown>[];
   }
 
   async findOne(id: string): Promise<Record<string, unknown>> {
@@ -80,7 +80,7 @@ export class OrderService {
       .lean()
       .exec();
     if (!order) throw new NotFoundException('Order not found');
-    return order as Record<string, unknown>;
+    return order as unknown as Record<string, unknown>;
   }
 
   async update(
@@ -115,7 +115,7 @@ export class OrderService {
       .lean()
       .exec();
     if (!updated) throw new NotFoundException('Order not found');
-    return updated as Record<string, unknown>;
+    return updated as unknown as Record<string, unknown>;
   }
 
   async remove(id: string): Promise<void> {

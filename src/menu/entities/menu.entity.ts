@@ -21,10 +21,10 @@ export default class Menu {
   price: number;
 
   @Prop()
-  image: string; // URL or path to image
+  image?: string; // URL or path to image
 
   @Prop({ default: true })
-  available: boolean;
+  available: boolean; // Is the menu item available
 }
 
 export const MenuSchema = SchemaFactory.createForClass(Menu);

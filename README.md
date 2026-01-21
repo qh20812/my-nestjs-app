@@ -93,6 +93,39 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 - Website - [https://nestjs.com](https://nestjs.com/)
 - Twitter - [@nestframework](https://twitter.com/nestframework)
 
+## Environment variables ⚙️
+
+- Install the config package:
+
+```bash
+npm install @nestjs/config
+```
+
+- Add environment variables in a `.env` file (an example is provided in `.env.example`). Example variables:
+
+```env
+PORT=3000
+MONGODB_URI=mongodb://localhost:27017/myapp2_db
+```
+
+- `ConfigModule` is registered globally in `src/app.module.ts`, so you can access env values anywhere by injecting `ConfigService`:
+
+```ts
+import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+
+@Injectable()
+export class ExampleService {
+  constructor(private configService: ConfigService) {}
+
+  getPort() {
+    return this.configService.get<number>('PORT');
+  }
+}
+```
+
+---
+
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
